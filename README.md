@@ -170,6 +170,6 @@ END $$ LANGUAGE plpgsql;
     - Baseline is one strategy. But it can only be applied to an existing DB WITHOUT flyway schema history. So you would have to delete `flyway_schema_history` table and merge all statements into a baseline sql file and bootstrap flyway to work for new versions. Extremely clumsy IMO.
     - Better approach could be to use `flyway.ignoreMissingMigrations=true` and ignore older files at `.gitignore`
 
-1. What happens when multiple replicas are released for trig in K8? i.e. if replica-1 and replica-2 gets deployed at the same time, one of them should succeed at migrating and the other replica would simply skip migration. Does this happen today? 
+1. What happens when multiple replicas are released for Foo in K8? i.e. if replica-1 and replica-2 gets deployed at the same time, one of them should succeed at migrating and the other replica would simply skip migration. Does this happen today? 
     
     Yes, as per the [doc]( https://flywaydb.org/documentation/faq#parallel) only one of them would get the lock and migrate.
