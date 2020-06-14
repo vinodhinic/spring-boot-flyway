@@ -82,6 +82,7 @@ I have added three flavors of using flyway with Spring Boot and Mybatis :
     Notice the usecase I have added. There is a `CacheService` which loads the data from db at application startup. It will fail only for the first time run with a table `employee` not found error.
     - R1 first run : `CacheService` bean creation fails but migration succeeds.
     - R1 restart : `CacheService` bean creation succeeds and migration not needed.
+    
     Since you would never see this error again as there is an `employee` table in DB after this release, it is crucial to note that the `CacheService` is loaded **before** the migration is applied.
     Hence the dependency on `FlywayMigrationInitializer` while initializing on all DAOs.
     Fix for this is available at springboot [2.3.0 M3](https://github.com/spring-projects/spring-boot/commit/48819253eb5171b93ede2b630fdb8e64ca845e62). More details [here](https://github.com/spring-projects/spring-boot/issues/13155) 
