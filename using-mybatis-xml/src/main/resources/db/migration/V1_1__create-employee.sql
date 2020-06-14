@@ -1,0 +1,1 @@
+CREATE TABLE employee (id integer not null primary key, name varchar(100));

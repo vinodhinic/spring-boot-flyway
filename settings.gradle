@@ -1,0 +1,6 @@
+rootProject.name = 'spring-boot-flyway'
+include 'using-mybatis-annotations', 'using-mybatis-xml', 'using-placeholders'
+
+rootProject.children.each { subproject ->
+    subproject.buildFileName = "${subproject.name}.gradle"
+}
